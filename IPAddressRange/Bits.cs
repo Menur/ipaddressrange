@@ -23,14 +23,14 @@ namespace NetTools
             return A.Zip(B, (a, b) => (byte)(a | b)).ToArray();
         }
 
-        public static bool GE(byte[] A, byte[] B)
+        public static bool GE(byte[] A, byte[] B, int offset = 0)
         {
             return A.Zip(B, (a, b) => a == b ? 0 : a < b ? 1 : -1)
                 .SkipWhile(c => c == 0)
                 .FirstOrDefault() >= 0;
         }
 
-        public static bool LE(byte[] A, byte[] B)
+        public static bool LE(byte[] A, byte[] B, int offset = 0)
         {
             return A.Zip(B, (a, b) => a == b ? 0 : a < b ? 1 : -1)
                 .SkipWhile(c => c == 0)
